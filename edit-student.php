@@ -2,11 +2,11 @@
 
 require "config.php";
 
-use App\Student;
+use App\myPets;
 
-$student_id = $_GET['id'];
+$pet_id = $_GET['id'];
 
-$student = Student::getById($student_id);
+$pet = myPets::getById($pet_id);
 ?>
 <!DOCTYPE html>
 <html>

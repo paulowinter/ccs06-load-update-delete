@@ -2,7 +2,7 @@
 
 require "config.php";
 
-use App\Student;
+use App\myPets;
 
 // Save the Student information, and automatically redirect to index
 
@@ -11,7 +11,7 @@ try {
 	$first_name = $_POST['first_name'];
 	$last_name = $_POST['last_name'];
 	$email = $_POST['email'];
-	$result = Student::update($id, $first_name, $last_name, $email);
+	$result = myPets::update($id, $first_name, $last_name, $email);
 
 	if ($result) {
 		header('Location: index.php');

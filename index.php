@@ -2,9 +2,9 @@
 
 require "config.php";
 
-use App\Student;
+use App\myPets;
 
-$students = Student::list();
+$students = myPets::list();
 ?>
 
 <h1>Students</h1>

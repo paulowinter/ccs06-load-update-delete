@@ -2,10 +2,10 @@
 
 require "config.php";
 
-use App\Student;
+use App\myPets;
 
 try {
-	Student::register('Richard', 'Feynman', 'richard@feynman.com');
+	myPets::register('Richard', 'Feynman', 'richard@feynman.com');
 	echo "<li>Added 1 student";
 
 	$students = [
@@ -20,7 +20,7 @@ try {
 			'email' => 'paul@erdos.com'
 		]
 	];
-	Student::registerMany($students);
+	myPets::registerMany($students);
 	echo "<li>Added " . count($students) . " more students";
 	echo "<br /><a href='index.php'>Proceed to Index Page</a>";
 
