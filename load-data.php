@@ -2,26 +2,34 @@
 
 require "config.php";
 
-use App\myPets;
+use App\Pets;
 
 try {
-	myPets::register('Richard', 'Feynman', 'richard@feynman.com');
-	echo "<li>Added 1 student";
+	Pets::register('Richard', 'Male', '01/26/2003', 'Guy', 'richard@feynman.com', 'sunset', '09210829153');
+	echo "<li>Added 1 pet";
 
-	$students = [
+	$pets = [
 		[
-			'first_name' => 'Albert',
-			'last_name' => 'Einstein',
-			'email' => 'albert@einstein.com'
+			'name' => 'Albert',
+			'gender' => 'Male',
+			'birthdate' => '01/26/2003',
+			'owner' => 'Guy',
+			'email' => 'Guy@einstein.com',
+			'address' => 'Sunset',
+			'contact_number' => '09210829153'
 		],
 		[
-			'first_name' => 'Paul',
-			'last_name' => 'Erdos',
-			'email' => 'paul@erdos.com'
+			'name' => 'Poopoo',
+			'gender' => 'Female',
+			'birthdate' => '06/27/2003',
+			'owner' => 'Girl',
+			'email' => 'Girl@power.com',
+			'address' => 'Porac',
+			'contact_number' => '09310929153'
 		]
 	];
-	myPets::registerMany($students);
-	echo "<li>Added " . count($students) . " more students";
+	Pets::registerMany($pets);
+	echo "<li>Added " . count($pets) . " more pets";
 	echo "<br /><a href='index.php'>Proceed to Index Page</a>";
 
 } catch (PDOException $e) {

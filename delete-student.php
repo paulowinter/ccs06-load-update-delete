@@ -2,13 +2,13 @@
 
 require "config.php";
 
-use App\myPets;
+use App\Pets;
 
 // Remove Student record, and automatically redirect to index
 
 try {
 	$id = $_GET['id'];
-	$result = myPets::deleteById($id);
+	$result = Pets::deleteById($id);
 
 	if ($result) {
 		header('Location: index.php');

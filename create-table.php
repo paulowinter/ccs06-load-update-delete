@@ -6,14 +6,18 @@ try {
 	$sql_users = "
 		CREATE TABLE IF NOT EXISTS pets (
 			id INT AUTO_INCREMENT PRIMARY KEY,
-			first_name VARCHAR(50) NOT NULL,
-			last_name VARCHAR(50) NOT NULL,
+			name VARCHAR(50) NOT NULL,
+			gender CHAR(6) NOT NULL,
+			birthdate VARCHAR(50) NOT NULL,
+			owner VARCHAR(70) NOT NULL,
 			email VARCHAR(100) UNIQUE NOT NULL,
+			address VARCHAR(255) NOT NULL,
+			contact_number VARCHAR(20) NOT NULL,
 			created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 		)
 	";
 	$conn->exec($sql_users);
-	echo "<li>Created students table";
+	echo "<li>Created pets table";
 
 } catch (PDOException $e) {
 	error_log($e->getMessage());

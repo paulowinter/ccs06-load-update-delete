@@ -4,7 +4,7 @@ namespace App;
 
 use PDO;
 
-class myPets
+class Pets
 {
 	protected $id;
 	protected $name;
@@ -30,10 +30,12 @@ class myPets
 	{
 		return $this->gender;
 	}
+
 	public function getBirthdate()
 	{
 		return $this->birthdate;
 	}
+
 	public function getOwner()
 	{
 		return $this->owner;
@@ -43,10 +45,12 @@ class myPets
 	{
 		return $this->email;
 	}
+
 	public function getAddress()
 	{
 		return $this->address;
 	}
+
 	public function getContactNumber()
 	{
 		return $this->contact_number;
@@ -60,12 +64,12 @@ class myPets
 			$sql = "SELECT * FROM pets";
 			$statement = $conn->query($sql);
 			
-			$students = [];
-			while ($row = $statement->fetchObject('App\myPets')) {
-				array_push($students, $row);
+			$pets = [];
+			while ($row = $statement->fetchObject('App\Pets')) {
+				array_push($pets, $row);
 			}
 
-			return $students;
+			return $pets;
 		} catch (PDOException $e) {
 			error_log($e->getMessage());
 		}
@@ -87,7 +91,7 @@ class myPets
 			$statement->execute([
 				'id' => $id
 			]);
-			$result = $statement->fetchObject('App\myPets');
+			$result = $statement->fetchObject('App\Pets');
 			return $result;
 		} catch (PDOException $e) {
 			error_log($e->getMessage());
@@ -103,7 +107,7 @@ class myPets
 		try {
 			$sql = "
 				INSERT INTO pets (name, gender, birthdate, owner, email, address, contact_number)
-				VALUES ('$name', '$gender', '$birthdate', '$owner', '$email', '$address', '$contact_number',)
+				VALUES ('$name','$gender', '$birthdate', '$owner', '$email', '$address', '$contact_number')
 			";
 			$conn->exec($sql);
 
@@ -130,7 +134,7 @@ class myPets
 						owner=\"{$user['owner']}\",
 						email=\"{$user['email']}\",
 						address=\"{$user['address']}\",
-						contact_number=\"{$user['contact_number']}\",
+						contact_number=\"{$user['contact_number']}\"
 				";
 				$conn->exec($sql);
 			}
@@ -156,7 +160,7 @@ class myPets
 					owner=?,
 					email=?,
 					address=?,
-					contact_number=?,
+					contact_number=?
 				WHERE id=?
 			";
 			$statement = $conn->prepare($sql);
@@ -191,7 +195,7 @@ class myPets
 					owner=:owner,
 					email=:email,
 					address=:address,
-					contact_number=:contact_number,
+					contact_number=:contact_number
 				WHERE id=:id
 			";
 			$statement = $conn->prepare($sql);
